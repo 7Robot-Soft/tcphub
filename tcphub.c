@@ -207,5 +207,5 @@ void hub(char *port)
 
 void usage(const char *cmd)
 {
-    printf("Usage: %s [port [decoder [decoders directory]]]\n", cmd);
+    printf("Usage: %s port [decoder [decoders directory]]\n", cmd);
 }
