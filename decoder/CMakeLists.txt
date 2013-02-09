@@ -4,6 +4,8 @@ project(TcpHubDecoder C)
 
 include_directories(..)
 
+add_library(char SHARED char.c)
+
 add_library(text SHARED text.c)
 
 add_library(atp SHARED atp.c)
