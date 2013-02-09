@@ -18,7 +18,11 @@ void client_decoder_clear(Client *client)
 
 int client_decode(Client *client)
 {
-    return 1;
+    if (client->rpos < client->rbufsize) {
+        client->rpos++;
+        return 1;
+    }
+    return 0;
 }
 
 void client_decoder_destroy(Client *client)
