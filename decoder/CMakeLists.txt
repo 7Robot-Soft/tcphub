@@ -12,4 +12,4 @@ add_library(atp SHARED atp.c)
 
 target_link_libraries(atp checktype)
 
-install(TARGETS text atp LIBRARY DESTINATION lib/tcphub)
+install(TARGETS char text atp LIBRARY DESTINATION lib/tcphub)
