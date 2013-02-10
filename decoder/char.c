@@ -4,8 +4,8 @@
 
 #include "client.h"
 
-int recvbufsize = 256;
-int sendbufsize = 10480;
+int recvbufsize = 64;
+int sendbufsize = 256;
 
 int client_decoder_init(Client *client)
 {
