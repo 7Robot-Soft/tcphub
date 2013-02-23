@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
             }
             sprintf(port, "%d", p);
             if (start_tcphub(port, decoder) < 0) {
-                fprintf(stderr, "[%5d] failed to launch tcphub\n", port);
+                fprintf(stderr, "[%s] failed to launch tcphub\n", port);
                 continue;
             }
         }
