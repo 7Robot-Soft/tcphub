@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <signal.h>
 #include <errno.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 const char *decoder_dir = NULL;
 const char *executable = "tcphub";
