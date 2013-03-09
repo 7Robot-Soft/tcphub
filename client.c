@@ -92,6 +92,7 @@ int client_send(Client *client)
 void client_delete(Client *client)
 {
     client_decoder_destroy(client);
+    close(client->socket);
     client->socket = 0;
     free(client->rbuf);
     client->rbuf = NULL;
