@@ -179,15 +179,17 @@ void hub(char *port)
                                 (clientc-i-1) * sizeof(*clientv));
                     }
                     clientc--;
+                    i--;
                     printf("Client disconnected, total: %d\n", clientc);
-                }
-                while (client_decode(clientv+i)) {
-                    for (j = 0 ; j < clientc ; j++) {
-                        if (j != i) {
-                            client_sendfrom(clientv+j, clientv+i);
+                } else {
+                    while (client_decode(clientv+i)) {
+                        for (j = 0 ; j < clientc ; j++) {
+                            if (j != i) {
+                                client_sendfrom(clientv+j, clientv+i);
+                            }
                         }
+                        client_cleartrame(clientv+i);
                     }
-                    client_cleartrame(clientv+i);
                 }
             }
             if (FD_ISSET(client_getsocket(clientv+i), &writefds)) {
@@ -198,6 +200,7 @@ void hub(char *port)
                                 (clientc-i-1) * sizeof(*clientv));
                     }
                     clientc--;
+                    i--;
                     printf("Client disconnected, total: %d\n", clientc);
                 }
             }
