@@ -57,6 +57,9 @@ int create_socket_stream(const char* hostname, const char* servname)
             continue;
         }
 
+        int optvalue = 1;
+        setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &optvalue, sizeof(optvalue));
+
         if (bind(sfd, rp->ai_addr, rp->ai_addrlen) == 0) {
             break;  /* Success */
         } else {
