@@ -28,10 +28,13 @@ int client_new(Client *client, int socket)
     client->rpos = 0;
     if ((client->sbuf = malloc(sendbufsize * sizeof(unsigned char))) == NULL) {
         perror("malloc");
+        free(client->rbuf);
         return -1;
     }
     client->sbufsize = 0;
     if (client_decoder_init(client) < 0) {
+        free(client->rbuf);
+        free(client->sbuf);
         return -1;
     }
 
